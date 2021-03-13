@@ -3,55 +3,55 @@
 /* 1) */
 Matrix::Matrix(int n, int m)
 {
-	rows = n;
-	cols = m;
-	elem = new double *[rows];
-	for(int i = 0; i < rows; i++)
-	{
-		elem[i] = new double [cols];
-		for(int j = 0; j < cols; j++)
-		{
-			elem[i][j] = 0.0;
-		}
-	}
+    rows = n;
+    cols = m;
+    elem = new double *[rows];
+    for(int i = 0; i < rows; i++)
+    {
+        elem[i] = new double [cols];
+        for(int j = 0; j < cols; j++)
+        {
+            elem[i][j] = 0.0;
+        }
+    }
 }
 
 /* 2) */
 Matrix::Matrix(double a)
 {
-	rows = 1;
-	cols = 1;
-	elem = new double *[rows];
-	elem[0] = new double [cols];
-	elem[0][0] = a;
-		
+    rows = 1;
+    cols = 1;
+    elem = new double *[rows];
+    elem[0] = new double [cols];
+    elem[0][0] = a;
+        
 
 }
 
 /* 3) */
 Matrix::Matrix(double *row, int m)
 {
-	rows = 1;
-	cols = m;
-	elem = new double *[rows];
-	elem[0] = new double [cols];
-	for(int j = 0; j < cols; j++)
-	{
-		elem[0][j] = row[j];
-	}
+    rows = 1;
+    cols = m;
+    elem = new double *[rows];
+    elem[0] = new double [cols];
+    for(int j = 0; j < cols; j++)
+    {
+        elem[0][j] = row[j];
+    }
 }
 
 /* 4) */
 Matrix::Matrix(int n, double *col)
 {
-	rows = n;
-	cols = 1;
-	elem = new double *[rows];
-	for(int j = 0; j < rows; j++)
-	{
-		elem[j] = new double [cols];
-		elem[j][0] = col[j];
-	}
+    rows = n;
+    cols = 1;
+    elem = new double *[rows];
+    for(int j = 0; j < rows; j++)
+    {
+        elem[j] = new double [cols];
+        elem[j][0] = col[j];
+    }
 }
 
 /* 5) */
@@ -85,7 +85,7 @@ Matrix::Matrix(char* string_f)
             {
                 if (check == true)
                 {
-                	matx_m_f++;
+                    matx_m_f++;
                 }
                 all_matr++;
                 while ((string_f[i] >= '0' && string_f[i] <= '9') || string_f[i] == '.')
@@ -187,108 +187,108 @@ Matrix::Matrix(char* string_f)
 
 Matrix Matrix::identity(int n)
 {
-	
-	Matrix ones(n,n);
-	for(int i = 0; i < n; i++)
-	{
-		ones.set(i,i,1);
-	}
-	cout << "Matrix of ones: \n" << ones << endl;
-	return ones;
+    
+    Matrix ones(n,n);
+    for(int i = 0; i < n; i++)
+    {
+        ones.set(i,i,1);
+    }
+    cout << "Matrix of ones: \n" << ones << endl;
+    return ones;
 }
 
 /* 7) */
 
 Matrix Matrix::diagonal(double *vals, int n)
 {
-	
-	Matrix ones(n,n);
-	for(int i = 0; i < n; i++)
-	{
-		ones.set(i, i, vals[i]);
-	}
-	cout << "Diagonal Matrix: \n" << ones << endl;
-	return ones;
+    
+    Matrix ones(n,n);
+    for(int i = 0; i < n; i++)
+    {
+        ones.set(i, i, vals[i]);
+    }
+    cout << "Diagonal Matrix: \n" << ones << endl;
+    return ones;
 }
 
 /* 8) */
 
 int Matrix::rows_matr()
 {
-	printf("Number of rows: ");
-	return rows;
+    printf("Number of rows: ");
+    return rows;
 }
 
 /* 9) */
 
 int Matrix::cols_matr()
 {
-	printf("Number of cols: ");
-	return cols;
+    printf("Number of cols: ");
+    return cols;
 }
 
 /* 10) */
 
 void Matrix::set(int i, int j, double val)
 {
-	elem[i][j] = val;
+    elem[i][j] = val;
 }
 
 /* 11) , 12) */
 
 Matrix Matrix::operator [](int i) const
 {
-	if(i >= 1 && i <= rows)
-	{
-		Matrix res(1, cols);
-		for(int j = 0; j < cols; j++)
-		{
-			res.elem[0][j] = elem[i - 1][j];
-		}
-		return res;
-	}
-	else if(i >= 1 && i <= cols)
-	{
-		Matrix res(rows, 1);
-		for(int j = 0; j < rows; j++)
-		{
-			res.elem[j][0] = elem[j][i - 1];
-		}
-		return res;
-	}
-	else
-	{
-		throw("ERROR");
+    if(i >= 1 && i <= rows)
+    {
+        Matrix res(1, cols);
+        for(int j = 0; j < cols; j++)
+        {
+            res.elem[0][j] = elem[i - 1][j];
+        }
+        return res;
+    }
+    else if(i >= 1 && i <= cols)
+    {
+        Matrix res(rows, 1);
+        for(int j = 0; j < rows; j++)
+        {
+            res.elem[j][0] = elem[j][i - 1];
+        }
+        return res;
+    }
+    else
+    {
+        throw("ERROR");
 
-	}
+    }
 } 
 
 /* 13) */
 
 Matrix operator *(Matrix &M, double scalar)
 {
-	Matrix buf(M.rows, M.cols);
-	for(int i = 0; i < M.rows; i++)
-	{
+    Matrix buf(M.rows, M.cols);
+    for(int i = 0; i < M.rows; i++)
+    {
         for(int j=0; j < M.cols; j++)
         {
-        	M.elem[i][j] *= scalar;
+            M.elem[i][j] *= scalar;
         }
     }
     return buf;
 } 
 /* 14) */
-ostream& operator<< (ostream& stream, Matrix& matrix)
+ostream& operator<< (ostream& stream, Matrix matrix)
 {
-	for (int i = 0; i < matrix.rows; i++)
-	{
-		for (int j = 0; j < matrix.cols; j++)
-		{
-			stream << matrix.elem[i][j] << " ";	
-		}
-		stream << endl;
-	}
-	return stream;
+    for (int i = 0; i < matrix.rows; i++)
+    {
+        for (int j = 0; j < matrix.cols; j++)
+        {
+            stream << matrix.elem[i][j] << " "; 
+        }
+        stream << endl;
+    }
+    return stream;
 }
 
 void Matrix::print()
@@ -302,12 +302,12 @@ void Matrix::print()
     }
 }
 
-/*Matrix::Matrix(Matrix& a)
+Matrix::Matrix(const Matrix& a)
 {
     //printf("33\n");
     //printf("111111\n");
-    cols = 3;
-    rows = 4;
+    cols = a.cols;
+    rows = a.rows;
 
     //printf("0000\n");
     elem = new double*[rows];
@@ -320,13 +320,14 @@ void Matrix::print()
             elem[i][j] = a.elem[i][j];
 
 
-}*/
+}
 
-/*Matrix::~Matrix()
+Matrix::~Matrix()
 {
-	for(int i = 0; i < rows; i++)
-	{
-		delete [] elem[i];
-	}
-	delete [] elem;
-}*/
+    for(int i = 0; i < rows; i++)
+    {
+        delete[] elem[i];
+    }
+    delete[] elem;
+}
+

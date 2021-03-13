@@ -14,6 +14,6 @@ int main()
         p = p * x + s;
         s = s * x + a;
     }
-    printf("Sum = %lf,\tDerivative = %lf", s, p);
+    printf("Sum = %lf,\tDerivative = %lf\n", s, p);
     return 0;
 }

@@ -17,12 +17,12 @@ int main()
     char c = 1;
     int n = 1; // если хотим вывести в битах
     //n = count(c);
-    printf("Short: %d\n", n * sizeof(short));
-    printf("Int: %d\n", n * sizeof(int));
-    printf("Long: %d\n", n * sizeof(long));
-    printf("Float: %d\n", n * sizeof(float));
-    printf("Double: %d\n", n * sizeof(double));
-    printf("Long double: %d\n", n * sizeof(long double));
+    printf("Short: %ld\n", n * sizeof(short));
+    printf("Int: %ld\n", n * sizeof(int));
+    printf("Long: %ld\n", n * sizeof(long));
+    printf("Float: %ld\n", n * sizeof(float));
+    printf("Double: %ld\n", n * sizeof(double));
+    printf("Long double: %ld\n", n * sizeof(long double));
     return 0;
 }
 

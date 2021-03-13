@@ -22,6 +22,7 @@ int main()
     c = ' ';
     printf("%d %c\n", (int) c, c);
     printf("Range between 'a' and '9' is %d\n",(int) ('a' - '9'));
-    printf("Range between 'A' and 'z' is %d\n",(int) abs('A' - 'z'));
+    printf("Range between 'A' and 'z' is %d\n",(int) abs('A' - 'z'));  
+    printf("\n");
     return 0;
 }
